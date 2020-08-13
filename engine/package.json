@@ -11,6 +11,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "app-root-path": "^3.0.0",
     "axios": "^0.19.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",

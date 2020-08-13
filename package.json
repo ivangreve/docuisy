@@ -1,0 +1,24 @@
+{
+  "name": "docuisy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "devDependencies": {},
+    "scripts": {
+        "start": "concurrently \"cd engine && NODE_PATH=./ node server.js\" \"cd web && npm run serve\"",
+        "dev": "concurrently \"cd server && npm run start\" \"npm run start\""
+      },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivangreve/docuisy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivangreve/docuisy/issues"
+  },
+  "homepage": "https://github.com/ivangreve/docuisy#readme"
+}
