@@ -59,8 +59,9 @@ export default {
         path: item.path
       }
       this.getFile(payload)
-      //this.$emit("fileClicked", item);
     }
   }
 }
 </script>
+
+<style></style>

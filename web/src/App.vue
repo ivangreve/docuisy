@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Home from "./views/Home";
+import Home from "./views/Home"
 
 export default {
   name: "App",
@@ -19,5 +19,5 @@ export default {
   data: () => ({
     //
   })
-};
+}
 </script>

@@ -13,6 +13,9 @@
     "@mdi/js": "^5.5.55",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "github-markdown-css": "^4.0.0",
+    "highlight.js": "^10.1.2",
+    "markdown-it-container": "^3.0.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
     "vue-router": "^3.2.0",
@@ -39,6 +42,7 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-vuetify": "^2.0.7",
+    "vue-markdown-highlight": "^1.0.5",
     "vue-template-compiler": "^2.6.11",
     "vuetify-loader": "^1.3.0"
   },
@@ -57,7 +61,10 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "vue/component-name-in-template-casing": ["error", "PascalCase"],
+      "vue/component-name-in-template-casing": [
+        "error",
+        "PascalCase"
+      ],
       "no-unused-vars": "off",
       "no-console": "off",
       "no-debugger": "off"
