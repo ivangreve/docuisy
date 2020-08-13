@@ -1,0 +1,330 @@
+openapi: 3.0.0
+info:
+  title: PolicieApi
+  version: "1.0"
+  contact:
+    name: Ivan Greve
+    email: ivangreve@gmail.com
+servers:
+  - url: "http://localhost:4000/api"
+paths:
+  /clients:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Clients
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  role:
+                    type: string
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      operationId: get-clients
+      security:
+        - Authorization: []
+  "/clients/Id/{id}":
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Clients
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  role:
+                    type: string
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      operationId: get-clients-clientById-id
+      security:
+        - Authorization: []
+  "/clients/Name/{name}":
+    parameters:
+      - schema:
+          type: string
+        name: name
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Clients
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  role:
+                    type: string
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      operationId: get-clients-clientByName-name
+      security:
+        - Authorization: []
+  "/clients/PolicieId/{policieId}":
+    parameters:
+      - schema:
+          type: string
+        name: policieId
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Clients
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  role:
+                    type: string
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      operationId: get-clients-clientByPolicieId-policieId
+      security:
+        - Authorization: []
+  /policies:
+    get:
+      summary: Your GET endpoint
+      tags: ["Policies"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  amountInsured:
+                    type: number
+                  email:
+                    type: string
+                  inceptionDate:
+                    type: string
+                  installmentPayment:
+                    type: boolean
+                  clientId:
+                    type: string
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      operationId: get-policies
+      security:
+        - Authorization: []
+  "/policies/ClientId/{clientId}":
+    parameters:
+      - schema:
+          type: string
+        name: clientId
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: ["Policies"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  amountInsured:
+                    type: number
+                  email:
+                    type: string
+                  inceptionDate:
+                    type: string
+                  installmentPayment:
+                    type: boolean
+                  clientId:
+                    type: string
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      operationId: get-policies-policiesByClientId-clientId
+      security:
+        - Authorization: []
+  "/policies/ClientName/{clientName}":
+    parameters:
+      - schema:
+          type: string
+        name: clientName
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: ["Policies"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  amountInsured:
+                    type: string
+                  email:
+                    type: string
+                  inceptionDate:
+                    type: string
+                  installmentPayment:
+                    type: boolean
+                  clientId:
+                    type: string
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      operationId: get-policies-policiesByClientName-clientName
+      security:
+        - Authorization: []
+  /auth/authenticate:
+    post:
+      summary: ""
+      tags: ["Authentication"]
+      operationId: post-auth-authenticate
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  role:
+                    type: string
+                  token:
+                    type: string
+        "401":
+          description: Unauthorized
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+            examples:
+              exampleBody:
+                summary: Request token body example
+                value:
+                  email: ivangreve@gmail.com
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+          text/html:
+            schema:
+              type: object
+              properties: {}
+        description: ""
+components:
+  schemas:
+    LoginRequestContract:
+      title: LoginRequestContract
+      type: object
+      description: ""
+      properties:
+        email:
+          type: string
+    LoginResponseContract:
+      title: LoginResponseContract
+      type: object
+      description: ""
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+        token:
+          type: string
+  securitySchemes:
+    Authorization:
+      type: http
+      scheme: bearer
+tags:
+  - name: Clients
+    description: Clients services
+  - name: Policies
+    description: Policies services
