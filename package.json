@@ -1,19 +1,17 @@
 {
   "name": "docuisy",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "concurrently": "^5.3.0",
-    "docuisy_api": "^1.0.1",
-    "docuisy_web": "^1.0.0",
-    "npm-run": "^5.0.1"
+    "concurrently": "^5.3.0"
   },
   "devDependencies": {},
   "bin": {
     "docuisy-start": "bin/index.js"
   },
   "scripts": {
+    "install": "cd engine && npm install",
     "start": "concurrently \"cd engine && node server.js\" \"cd web && npm run serve\"",
     "docuisy": "concurrently \"cd bin && node global.js\"",
     "dev": "concurrently \"cd server && npm run start\" \"npm run start\""

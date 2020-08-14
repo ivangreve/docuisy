@@ -1,23 +1,38 @@
 #!/usr/bin/env node
-//var api = require('./docuisy_api')
+
 
 var params = process.argv
 var docuisyPath = params[1].split('bin')[0]
-var enginePath = docuisyPath + 'node_modules/docuisy_api'
-var webPath = docuisyPath + 'node_modules/docuisy_web'
+var enginePath = docuisyPath + 'engine'
+var webPath = docuisyPath + 'web'
 console.log(webPath)
 
 console.log("Iniciando...")
 var exec = require('child_process').exec
 
-var server = exec('cd ' + enginePath + ' && node server.js',
-  function(err, stdout, stderr) {
-    if (err) throw err;
-    else console.log("Server...");
-});
 
-var web = exec('cd ' + webPath + ' && npm run serve',
-  function(err, stdout, stderr) {
-    if (err) throw err;
-    console.log(stout);
-});
+
+var fs = require('fs')
+var resolve = require('path').resolve
+var join = require('path').join
+var cp = require('child_process')
+var os = require('os')
+
+// get library path
+var lib = resolve(__dirname, '../')
+
+fs.readdirSync(lib)
+  .forEach(function (mod) {
+    var modPath = join(lib, mod)
+// ensure path has package.json
+if (!fs.existsSync(join(modPath, 'package.json'))) return
+
+// npm binary based on OS
+var npmCmd = os.platform().startsWith('win') ? 'npm.cmd' : 'npm'
+
+// install folder
+cp.spawn(npmCmd, ['i'], { env: process.env, cwd: modPath, stdio: 'inherit' })
+cp.spawn(npmCmd, ['start'], { env: process.env, cwd: modPath, stdio: 'inherit' })
+
+})
+

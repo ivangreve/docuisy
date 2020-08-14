@@ -2,7 +2,7 @@
 
 ## Project setup
 ```
-npm install
+npm i -g docuisy
 ```
 
 ### Start
