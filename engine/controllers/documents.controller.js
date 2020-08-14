@@ -4,7 +4,6 @@ const Role = require("../helpers/role");
 const asyncMiddleware = require("../helpers/asyncMiddleware");
 var fs = require("fs");
 const dree = require("dree");
-var appRoot = require("app-root-path");
 
 // Documents ROUTES
 router.post(
@@ -43,8 +42,6 @@ async function updateFile(req, res, next) {
 async function getDirectoryTree(req, res, next) {
   //En el futuro https://www.npmjs.com/package/app-root-path => Usar /node_modules
   const pathRoot = process.env.PWD;
-  console.log(pathRoot);
-  //appRoot.path.split("engine")[0] + "wiki";
   const options = {
     stat: false,
     normalize: true,

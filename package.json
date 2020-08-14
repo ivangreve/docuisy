@@ -1,6 +1,6 @@
 {
   "name": "docuisy",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
@@ -13,9 +13,11 @@
     "docuisy-start": "bin/index.js"
   },
   "scripts": {
+    "postinstall": "cd engine && npm install",
     "start": "concurrently \"cd engine && node server.js\" \"cd web && npm run serve\"",
     "docuisy": "concurrently \"cd bin && node global.js\"",
-    "dev": "concurrently \"cd server && npm run start\" \"npm run start\""
+    "dev": "concurrently \"cd server && npm run start\" \"npm run start\"",
+    "prepublishOnly": "cd web && npm run build"
   },
   "repository": {
     "type": "git",

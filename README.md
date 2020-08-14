@@ -1,18 +1,18 @@
 # Docuisy
 
-## Project setup
+Static Document **.md** Generator ✍
+
+## Installing 🦾🕸
 ```
 npm i -g docuisy
 ```
 
-### Start
+## Run docuisy 🏃‍♂️
 ```
-npm start
+docuisy-start
 ```
 
+## User Interface 🦄
+``` language
 UI: localhost:8080
-
-
-Para deploy
-Hacer build de vue => se sube la dist folder
-npm publish
+```

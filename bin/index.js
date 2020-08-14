@@ -35,7 +35,7 @@ fs.readdirSync(lib)
 
     // install folder
     if(mod == 'engine'){
-        cp.spawn(npmCmd, ['i'], { env: process.env, cwd: modPath, stdio: 'inherit' })
+        //cp.spawn(npmCmd, ['i'], { env: process.env, cwd: modPath, stdio: 'inherit' })
         cp.spawn(npmCmd, ['start'], { env: process.env, cwd: modPath, stdio: 'inherit' })
     }
     
