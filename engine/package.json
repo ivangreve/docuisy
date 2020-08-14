@@ -1,6 +1,6 @@
 {
-  "name": "api",
-  "version": "1.0.0",
+  "name": "docuisy_api",
+  "version": "1.0.1",
   "description": "docuisy",
   "repository": {
     "type": "git"
