@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const authorize = require("../helpers/authorize");
 const Role = require("../helpers/role");
 const asyncMiddleware = require("../helpers/asyncMiddleware");
 var fs = require("fs");
@@ -50,7 +49,7 @@ async function getDirectoryTree(req, res, next) {
     followLinks: true,
     size: true,
     hash: true,
-    extensions: ["txt", "doc", "md", "csv"]
+    extensions: ["txt", "md", "csv"]
   };
 
   const tree = dree.scan(pathRoot, options);

@@ -4,19 +4,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const errorHandler = require("./helpers/errorHandler");
 const cors = require("cors");
-const swaggerUi = require("swagger-ui-express");
-const yaml = require("yamljs");
-
-const swaggerDocument = yaml.load("./api-documentation/policie-api.v1.yaml");
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
 // Api routes
-app.use("/api/auth", require("./controllers/auth.controller"));
-app.use("/api/clients", require("./controllers/clients.controller"));
 app.use("/api/documents", require("./controllers/documents.controller"));
 
 // global error handler
