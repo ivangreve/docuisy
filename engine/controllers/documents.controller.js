@@ -48,7 +48,8 @@ async function getDirectoryTree(req, res, next) {
     followLinks: true,
     size: true,
     hash: true,
-    extensions: ["txt", "md", "csv"]
+    exclude: [/node_modules/,/.vscode/, /.git/, /dist/, /.idea/, /\*.sln/ ],
+    extensions: ["txt", "md", "jpg", "png"]
   };
 
   const tree = dree.scan(pathRoot, options);

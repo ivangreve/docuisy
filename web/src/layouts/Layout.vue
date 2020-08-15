@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" app clipped>
+    <v-navigation-drawer v-model="drawer" width="400" app clipped>
       <v-list dense>
         <FolderTree />
       </v-list>
@@ -40,8 +40,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 h1 {
   font-size: 1.5rem !important;
+}
+.v-treeview-node.v-treeview-node--rounded .v-treeview-node__root {
+  margin: 0px;
 }
 </style>

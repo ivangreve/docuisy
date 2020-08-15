@@ -11,7 +11,7 @@
       v-else
       :items="directoryTree"
       :dense="true"
-      :open-on-click="true"
+      :open-on-click="false"
       :rounded="true"
       :return-object="true"
       :activatable="true"
@@ -23,6 +23,24 @@
         }}</v-icon>
         <v-icon v-else>{{ files[item.extension] }}</v-icon>
       </template>
+
+      <template v-slot:append="{ item, open, leaf }">
+        <v-btn
+          icon
+          v-if="!item.extension && (open || leaf)"
+          @click="createFile(item)"
+        >
+          <v-icon>mdi-file-plus-outline </v-icon>
+        </v-btn>
+        <v-btn
+          icon
+          v-if="!item.extension && (open || leaf)"
+          @click="createFolder(item)"
+        >
+          <v-icon>mdi-folder-plus-outline </v-icon>
+        </v-btn>
+      </template>
+
       <template v-slot:label="{ item }">
         <a @click="selectFile(item)">{{ item.name }}</a>
       </template>
@@ -81,6 +99,20 @@ export default {
         path: item.path
       }
       this.getFile(payload)
+    },
+    createFolder(item) {
+      const payload = {
+        path: item.path,
+        folderName: "new folder"
+      }
+      console.log(payload)
+    },
+    createFile(item) {
+      const payload = {
+        path: item.path,
+        fileName: "file.md"
+      }
+      console.log(payload)
     }
   }
 }
