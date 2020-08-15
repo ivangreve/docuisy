@@ -1,16 +1,6 @@
 #!/usr/bin/env node
-//var api = require('./docuisy_api')
 
-var params = process.argv
-var docuisyPath = params[1].split('bin')[0]
-var enginePath = docuisyPath + 'engine'
-var webPath = docuisyPath + 'web'
-console.log(webPath)
-
-console.log("Iniciando...")
-var exec = require('child_process').exec
-
-
+console.log("\r\n \/$$$$$$$                                \/$$                    \r\n| $$__  $$                              |__\/                    \r\n| $$  \\ $$  \/$$$$$$   \/$$$$$$$ \/$$   \/$$ \/$$  \/$$$$$$$ \/$$   \/$$\r\n| $$  | $$ \/$$__  $$ \/$$_____\/| $$  | $$| $$ \/$$_____\/| $$  | $$\r\n| $$  | $$| $$  \\ $$| $$      | $$  | $$| $$|  $$$$$$ | $$  | $$\r\n| $$  | $$| $$  | $$| $$      | $$  | $$| $$ \\____  $$| $$  | $$\r\n| $$$$$$$\/|  $$$$$$\/|  $$$$$$$|  $$$$$$\/| $$ \/$$$$$$$\/|  $$$$$$$\r\n|_______\/  \\______\/  \\_______\/ \\______\/ |__\/|_______\/  \\____  $$\r\n                                                       \/$$  | $$\r\n                                                      |  $$$$$$\/\r\n                                                       \\______\/ \r\n")
 
 var fs = require('fs')
 var resolve = require('path').resolve
@@ -24,23 +14,19 @@ var lib = resolve(__dirname, '../')
 // npm binary based on OS
 var npmCmd = os.platform().startsWith('win') ? 'npm.cmd' : 'npm'
 
-// install http-server globally
-//cp.spawn(npmCmd, ['i', '-g', 'http-server' ], { stdio: 'inherit' })
-
 fs.readdirSync(lib)
   .forEach(function (mod) {
     var modPath = join(lib, mod)
     // ensure path has package.json
     if (!fs.existsSync(join(modPath, 'package.json'))) return
 
-    // install folder
     if(mod == 'engine'){
-        //cp.spawn(npmCmd, ['i'], { env: process.env, cwd: modPath, stdio: 'inherit' })
+        // Run Api
         cp.spawn(npmCmd, ['start'], { env: process.env, cwd: modPath, stdio: 'inherit' })
     }
     
     if(mod == 'web'){
-        // Run web
+        // Run Web
         cp.spawn('node', ['web.js'], {cwd: modPath, stdio: 'inherit' })
 
     }

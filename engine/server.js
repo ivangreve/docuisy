@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
 
 const port = process.env.NODE_ENV === "production" ? 80 : 4000;
 const server = app.listen(port, function () {
-  console.log("Server listening on port " + port);
+  console.log("API UP on port " + port);
 });
 
 module.exports = app;

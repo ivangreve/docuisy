@@ -1,7 +1,9 @@
 var StaticServer = require('static-server');
+var BgGreen = "\x1b[42m"
+
 var server = new StaticServer({
   rootPath: './dist',            // required, the root of the server file tree
-  port: 8080,               // required, the port to listen
+  port: 8888,               // required, the port to listen
   cors: '*',                // optional, defaults to undefined
   followSymlink: true,      // optional, defaults to a 404 error
   templates: {
@@ -11,7 +13,8 @@ var server = new StaticServer({
 });
  
 server.start(function () {
-  console.log('Server listening to', server.port);
+  console.log("Docuisy UI Ready!")
+  console.log('\x1b[42m%s\x1b[0m', 'UI: localhost:' + server.port);
 });
  
 server.on('request', function (req, res) {
