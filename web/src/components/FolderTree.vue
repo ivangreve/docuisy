@@ -15,7 +15,7 @@
       :rounded="true"
       :return-object="true"
       :activatable="true"
-      item-key="name"
+      item-key="hash"
     >
       <template v-slot:prepend="{ item, open }">
         <v-icon v-if="!item.extension">{{
@@ -105,14 +105,29 @@ export default {
         path: item.path,
         folderName: "new folder"
       }
-      console.log(payload)
+      axiosInstance
+        .post("/api/documents/createFolder", payload)
+        .then((response) => {
+          this.getDirectoryTree()
+        })
+        .catch((error) => {
+          alert("Error create file")
+        })
     },
     createFile(item) {
       const payload = {
         path: item.path,
         fileName: "file.md"
       }
-      console.log(payload)
+
+      axiosInstance
+        .post("/api/documents/createFile", payload)
+        .then((response) => {
+          this.getDirectoryTree()
+        })
+        .catch((error) => {
+          alert("Error create file")
+        })
     }
   }
 }

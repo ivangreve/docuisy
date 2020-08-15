@@ -16,6 +16,16 @@ router.post(
   asyncMiddleware(async (req, res, next) => updateFile(req, res, next))
 );
 
+router.post(
+  "/createFolder",
+  asyncMiddleware(async (req, res, next) => createFolder(req, res, next))
+);
+
+router.post(
+  "/createFile",
+  asyncMiddleware(async (req, res, next) => createFile(req, res, next))
+);
+
 router.get(
   "/getDirectoryTree",
   asyncMiddleware(async (req, res, next) => getDirectoryTree(req, res, next))
@@ -27,7 +37,7 @@ async function getFile(req, res, next) {
   let path = req.body.path;
 
   fs.readFile(path, "utf8", function (err, data) {
-    res.json({ fileContent: data });
+    res.json({ fileContent: data, error: err });
   });
 }
 
@@ -35,8 +45,28 @@ async function updateFile(req, res, next) {
   const path = req.body.path;
   const fileContent = req.body.fileContent;
   fs.writeFile(path, fileContent, function (err) {
-    res.json({ success: true });
+    res.json({ success: false, error: err });
   });
+}
+
+async function createFile(req, res, next) {
+  console.log(req.body)
+  const path = req.body.path + '/' + req.body.fileName;
+  const fileContent = "# Docuisy - Empty file";
+  fs.writeFile(path, fileContent, function (err) {
+    res.json({ success: false, error: err });
+  });
+}
+
+
+async function createFolder(req, res, next) {
+  const path = req.body.path;
+  const folderName = req.body.folderName;
+  var dir = path + '/' + folderName ;
+  
+  if (!fs.existsSync(dir)){
+      fs.mkdirSync(dir);
+  }
 }
 
 async function getDirectoryTree(req, res, next) {

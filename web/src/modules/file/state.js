@@ -1,4 +1,5 @@
 export default {
   fileContent: "",
-  filePath: ""
+  filePath: "",
+  editMode: false
 }

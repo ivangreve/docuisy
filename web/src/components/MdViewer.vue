@@ -7,6 +7,9 @@
       medium
       dark
       class="mb-10 mt-5"
+      absolute
+      right
+      bottom
       @click="editFile"
     >
       <v-icon v-if="editMode">mdi-window-close</v-icon>
@@ -19,27 +22,26 @@
 
 <script>
 import EditorMd from "@/components/EditorMd.vue"
-import { mapState, mapActions } from "vuex"
+import { mapState, mapActions, mapMutations } from "vuex"
 require("@/assets/github-markdown.css")
 let md = require("markdown-it")()
 
 export default {
   computed: {
-    ...mapState("file", ["fileContent", "filePath"])
+    ...mapState("file", ["fileContent", "filePath", "editMode"])
   },
   components: { EditorMd },
   data() {
-    return {
-      editMode: false
-    }
+    return {}
   },
   created() {
     this.configureParser()
   },
   methods: {
-    ...mapActions("file", ["saveFile"]),
+    ...mapActions("file", ["saveFile", "setEditMode"]),
+    ...mapMutations("file", ["setEditMode"]),
     editFile() {
-      this.editMode = !this.editMode
+      this.setEditMode(!this.editMode)
     },
     getMdHtml() {
       const html = md.render(this.fileContent)

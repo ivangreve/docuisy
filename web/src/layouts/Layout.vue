@@ -18,8 +18,8 @@
     </v-app-bar>
     <v-content>
       <!-- <slot /> -->
-      <SkeletonMarkDown v-if="loading" class="mx-15" />
-      <MdViewer v-else class="mx-15" />
+      <SkeletonMarkDown v-if="loading" class="mx-10" />
+      <MdViewer v-else class="ma-10 " />
     </v-content>
   </v-app>
 </template>
@@ -28,7 +28,7 @@
 import MdViewer from "@/components/MdViewer.vue"
 import FolderTree from "@/components/FolderTree.vue"
 import SkeletonMarkDown from "@/components/SkeletonMarkDown.vue"
-import { mapState } from "vuex"
+import { mapState, mapMutations } from "vuex"
 
 export default {
   data: () => ({
@@ -36,7 +36,10 @@ export default {
     title: "Docuisy"
   }),
   components: { MdViewer, SkeletonMarkDown, FolderTree },
-  computed: { ...mapState("loading", ["loading"]) }
+  computed: {
+    ...mapState("loading", ["loading"])
+  },
+  methods: {}
 }
 </script>
 
