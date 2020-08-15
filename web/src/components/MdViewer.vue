@@ -7,7 +7,7 @@
       medium
       dark
       class="mb-10 mt-5"
-      absolute
+      fixed
       right
       bottom
       @click="editFile"

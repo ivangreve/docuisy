@@ -110,8 +110,8 @@ export default {
         .then((response) => {
           this.getDirectoryTree()
         })
-        .catch((error) => {
-          alert("Error create file")
+        .catch((error, res) => {
+          alert("Error creating folder!")
         })
     },
     createFile(item) {
@@ -123,10 +123,12 @@ export default {
       axiosInstance
         .post("/api/documents/createFile", payload)
         .then((response) => {
+          const dir = payload.path + "/" + payload.fileName
           this.getDirectoryTree()
+          this.getFile({ path: dir })
         })
         .catch((error) => {
-          alert("Error create file")
+          alert("Error creating file!")
         })
     }
   }

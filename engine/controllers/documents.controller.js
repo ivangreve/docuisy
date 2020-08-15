@@ -50,22 +50,24 @@ async function updateFile(req, res, next) {
 }
 
 async function createFile(req, res, next) {
-  console.log(req.body)
-  const path = req.body.path + '/' + req.body.fileName;
+  console.log(req.body);
+  const path = req.body.path + "/" + req.body.fileName;
   const fileContent = "# Docuisy - Empty file";
   fs.writeFile(path, fileContent, function (err) {
     res.json({ success: false, error: err });
   });
 }
 
-
 async function createFolder(req, res, next) {
   const path = req.body.path;
   const folderName = req.body.folderName;
-  var dir = path + '/' + folderName ;
-  
-  if (!fs.existsSync(dir)){
-      fs.mkdirSync(dir);
+  var dir = path + "/" + folderName;
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+    res.json({ success: true, message: "Carpeta creada!" });
+  } else {
+    res.json({ success: false, message: "Carpeta existente!" });
   }
 }
 
@@ -78,10 +80,12 @@ async function getDirectoryTree(req, res, next) {
     followLinks: true,
     size: true,
     hash: true,
-    exclude: [/node_modules/,/.vscode/, /.git/, /dist/, /.idea/, /\*.sln/ ],
+    exclude: [/node_modules/, /.vscode/, /.git/, /dist/, /.idea/, /\*.sln/],
     extensions: ["txt", "md", "jpg", "png"]
   };
 
   const tree = dree.scan(pathRoot, options);
   res.json([tree]);
 }
+
+// Servicio para eliminar folders y files
