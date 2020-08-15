@@ -2,7 +2,7 @@
   <v-md-editor
     v-model="fileContent"
     @save="onSaveClick"
-    height="800px"
+    height="80vh"
   ></v-md-editor>
 </template>
 

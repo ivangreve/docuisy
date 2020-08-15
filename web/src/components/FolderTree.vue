@@ -1,6 +1,14 @@
 <template>
   <div>
+    <v-skeleton-loader
+      v-if="this.loading"
+      ref="skeleton"
+      :boilerplate="true"
+      type="list-item-three-line"
+      class="mx-auto"
+    ></v-skeleton-loader>
     <v-treeview
+      v-else
       :items="directoryTree"
       :dense="true"
       :open-on-click="true"
@@ -24,7 +32,7 @@
 
 <script>
 let axiosInstance = require("@/plugins/axiosInstance")
-import { mapActions } from "vuex"
+import { mapState, mapActions, mapMutations } from "vuex"
 
 export default {
   props: [],
@@ -44,13 +52,20 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState("loading", ["loading"])
+  },
   mounted() {
     this.getDirectoryTree()
   },
   methods: {
     ...mapActions("file", ["getFile"]),
+    ...mapMutations("loading", ["setLoading"]),
+
     getDirectoryTree() {
+      this.setLoading(true)
       axiosInstance.get("/api/documents/getDirectoryTree").then((response) => {
+        this.setLoading(false)
         this.directoryTree = response.data
       })
     },

@@ -6,10 +6,11 @@
       fab
       medium
       dark
-      class="mb-15"
+      class="mb-10 mt-5"
       @click="editFile"
     >
-      <v-icon>mdi-pencil</v-icon>
+      <v-icon v-if="editMode">mdi-window-close</v-icon>
+      <v-icon v-else>mdi-pencil</v-icon>
     </v-btn>
     <EditorMd v-if="editMode" />
     <div v-else class="markdown-body" v-html="getMdHtml()"></div>
