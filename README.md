@@ -21,5 +21,5 @@ docuisy-start
 
 ## User Interface 🦄
 ``` language
-UI: localhost:8080
+UI: localhost:8888
 ```
