@@ -64,12 +64,19 @@ export default {
 
     getDirectoryTree() {
       this.setLoading(true)
-      axiosInstance.get("/api/documents/getDirectoryTree").then((response) => {
-        this.setLoading(false)
-        this.directoryTree = response.data
-      })
+      axiosInstance
+        .get("/api/documents/getDirectoryTree")
+        .then((response) => {
+          this.setLoading(false)
+          this.directoryTree = response.data
+        })
+        .catch((error) => {
+          alert("Error fetching data")
+        })
     },
     async selectFile(item) {
+      if (item.type == "directory") return
+
       let payload = {
         path: item.path
       }
