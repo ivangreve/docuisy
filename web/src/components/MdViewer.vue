@@ -16,15 +16,22 @@
       <v-icon v-else>mdi-pencil</v-icon>
     </v-btn>
     <EditorMd v-if="editMode" />
-    <div v-else class="markdown-body" v-html="getMdHtml()"></div>
+    <div
+      v-else
+      v-html="getMdHtml()"
+      class="v-md-editor-preview vuepress-markdown-body"
+    ></div>
   </div>
 </template>
 
 <script>
 import EditorMd from "@/components/EditorMd.vue"
 import { mapState, mapActions, mapMutations } from "vuex"
-require("@/assets/github-markdown.css")
-let md = require("markdown-it")()
+let md = require("markdown-it")({
+  html: true,
+  linkify: true,
+  typographer: true
+})
 
 export default {
   computed: {
@@ -72,4 +79,24 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+h1 {
+  margin-top: 0 !important;
+}
+h1,
+h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+</style>
