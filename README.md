@@ -1,7 +1,7 @@
 # Docuisy
 
-Static Document **.md** Generator ✍
 
+Docuisy is a tool to view and edit all of our project *readme* files, simple and fast! 📃✍
 
 <p align="center">
   <a href="https://npmcharts.com/compare/docuisy?minimal=true"><img src="https://img.shields.io/npm/dm/docuisy.svg?sanitize=true" alt="Downloads"></a>
@@ -15,12 +15,12 @@ Static Document **.md** Generator ✍
 npm i -g docuisy
 ```
 
-## Run docuisy 🏃‍♂️
+## Run Docuisy 🏃‍♂️
 ```
 docuisy-start
 ```
 
-## User Interface 🦄
+## Docuisy - User Interface 🦄
 ``` language
 UI: localhost:8888
 ```
