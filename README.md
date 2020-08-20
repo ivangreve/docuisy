@@ -1,6 +1,4 @@
 # Docuisy
-
-
 Docuisy is a tool to view and edit all of our project *readme* files, simple and fast! 📃✍
 
 <p align="center">
@@ -9,6 +7,15 @@ Docuisy is a tool to view and edit all of our project *readme* files, simple and
   <a href="https://www.npmjs.com/package/docuisy"><img src="https://img.shields.io/npm/l/docuisy.svg?sanitize=true" alt="License"></a>
   <br>
 </p>
+
+## Features in progress 👨‍💻🧱🔨
+- Create new files
+- Create new folders
+- Delete files
+- Delete folders
+
+
+
 
 ## Installing 🦾🕸
 ```
